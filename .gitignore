@@ -27,3 +27,4 @@ dist-ssr
 prisma/migrations
 prisma/dev.db-journal
 prisma/dev.db
+.vercel
