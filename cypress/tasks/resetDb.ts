@@ -1,11 +1,12 @@
-import { Prisma, PrismaClient } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
 
 export async function resetDatabase() {
   const prisma = new PrismaClient();
 
   try {
     await prisma.todo.deleteMany();
-    await prisma.$executeRaw(Prisma.sql`ALTER SEQUENCE "Todo_id_seq" RESTART WITH 1`);
+    // figure out later
+    // await prisma.$executeRaw(Prisma.sql`ALTER SEQUENCE "Todo_id_seq" RESTART WITH 1`);
     console.log("Database reset successful.");
   } catch (error) {
     console.error("Error resetting database:", error);

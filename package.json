@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@prisma/client": "^4.16.1",
+    "@replayio/cypress": "^1.0.4-alpha.0",
     "autoprefixer": "^10.4.14",
     "axios": "^1.4.0",
     "body-parser": "^1.20.2",
