@@ -38,9 +38,10 @@ export const TodoItem: React.FC<Props> = ({ todo, deleteTodo }) => {
   };
 
   return (
-    <li className="flex justify-between items-center bg-slate-100 rounded-md px-2 py-1 my-1.5 hover:bg-slate-200 cursor-pointer w-full" onClick={handleEdit}>
-      <div className="flex items-center">
+    <li className="flex justify-between items-center bg-slate-100 rounded-md px-2 py-1 my-1.5 hover:bg-slate-200 cursor-pointer w-full">
+      <div className="flex items-center w-full">
         <input 
+          data-test="todo-complete"
           type="checkbox" 
           checked={todo.completed} 
           onChange={() => handleComplete(todo)} 
@@ -48,6 +49,7 @@ export const TodoItem: React.FC<Props> = ({ todo, deleteTodo }) => {
         />
        {editing ? (
           <input
+            data-test="todo-edit-field"
             type="text"
             value={editedTitle}
             onChange={handleChange}
@@ -60,20 +62,23 @@ export const TodoItem: React.FC<Props> = ({ todo, deleteTodo }) => {
               }
             }}
             autoFocus
-            className="outline-none bg-transparent text-lg"
+            className="outline-none bg-transparent text-lg flex-grow"
           />
         ) : (
-          <p 
-            className="text-gray-800 text-lg"
-          >
-            {todo.title}
-          </p>
+            <p 
+              className={`text-gray-800 text-lg flex-grow ${todo.completed ? 'line-through	' : ''}`}
+              data-test="todo-item"
+              onClick={handleEdit}
+            >
+              {todo.title}
+            </p>
           )}
-      </div>
       <Close
         className="fill-red-600 ml-2 delete"
+        data-test="todo-delete"
         onClick={() => deleteTodo(todo.id)}
       />
+      </div>
     </li>
   );
 };

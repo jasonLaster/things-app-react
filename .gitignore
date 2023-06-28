@@ -28,3 +28,7 @@ prisma/migrations
 prisma/dev.db-journal
 prisma/dev.db
 .vercel
+
+cypress/screenshots
+cypress/videos
+cypress/downloads

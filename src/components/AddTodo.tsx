@@ -18,6 +18,7 @@ export const AddTodo: React.FC = () => {
       className="w-full outline-none py-1"
       placeholder="New To-Do"
       value={newTodo}
+      data-test="new-todo"
       onChange={(e) => setNewTodo(e.target.value)}
       onKeyUp={handleSubmit}
     />
