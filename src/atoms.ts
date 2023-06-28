@@ -1,5 +1,4 @@
-// atoms.ts
-import { atom } from "jotai";
+import { atom, useAtom } from "jotai";
 import axios from "axios";
 import { Todo } from "./types";
 
@@ -32,6 +31,16 @@ export const deleteTodoAtom = atom(null, async (get, set, todoId: number) => {
 export const completeTodoAtom = atom(null, async (get, set, todo: Todo) => {
   const res = await axios.put(`/api/todos/${todo.id}`, {
     completed: !todo.completed,
+  });
+  set(
+    todosAtom,
+    get(todosAtom).map((t: Todo) => (t.id === todo.id ? res.data : t))
+  );
+});
+
+export const editTodoAtom = atom(null, async (get, set, todo: Pick<Todo, 'title' | 'id'>) => {
+  const res = await axios.put(`/api/todos/${todo.id}`, {
+    title: todo.title
   });
   set(
     todosAtom,

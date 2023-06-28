@@ -30,10 +30,10 @@ app.delete('/todos/:id', async (req, res) => {
 
 app.put('/todos/:id', async (req, res) => {
   const { id } = req.params;
-  const { completed } = req.body;
+  const { completed, title } = req.body;
   const todo = await prisma.todo.update({
       where: { id: Number(id) },
-      data: { completed },
+      data: { completed, title },
     });  
   res.json(todo);
 });
