@@ -4,12 +4,12 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "concurrently \"vite\" \"node server.mjs\"",
     "build": "tsc && vite build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "start": "concurrently \"npm run dev\" \"node server.mjs\"",
     "postinstall": "prisma generate && prisma migrate dev --name init",
+    "db:start": "prisma generate && prisma migrate dev --name init",
     "db:reset": "prisma db push --force-reset"
   },
   "dependencies": {

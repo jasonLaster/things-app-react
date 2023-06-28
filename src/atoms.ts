@@ -1,4 +1,4 @@
-import { atom, useAtom } from "jotai";
+import { atom } from "jotai";
 import axios from "axios";
 import { Todo } from "./types";
 
