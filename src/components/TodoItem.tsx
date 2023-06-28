@@ -16,7 +16,7 @@ export const TodoItem: React.FC<Props> = ({ todo, deleteTodo }) => {
     completeTodo(todo);
   };
   return (
-    <li className="flex justify-between items-center bg-slate-100 rounded-md p-3">
+    <li className="flex justify-between items-center bg-slate-100 rounded-md px-2 py-1 my-1.5 hover:bg-slate-200 cursor-pointer">
       <div className="flex items-center">
         <input 
           type="checkbox" 
