@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { useAtom } from 'jotai';
-import { addTodoAtom } from '../atoms';
+import { useAtom } from "jotai";
+import { addTodoAtom } from "../atoms";
 
 export const AddTodo: React.FC = () => {
   const [newTodo, setNewTodo] = useState("");
