@@ -1,15 +1,16 @@
-import { TodoList } from "./components/TodoList";
-import { AddTodo } from "./components/AddTodo";
-import { Inbox } from "./components/icons/Inbox";
+import { TodoList } from "../src/components/TodoList";
+import { AddTodo } from "../src/components/AddTodo";
+import { Inbox } from "../src/components/icons/Inbox";
 import { useAtom } from "jotai";
-import { todosAtom, deleteTodoAtom, fetchTodosAtom } from "./atoms";
+import { todosAtom, deleteTodoAtom, fetchTodosAtom } from "../src/atoms";
 import { useEffect } from "react";
 
-export const App = () => {
+export default function Home() {
   const [, fetchTodos] = useAtom(fetchTodosAtom);
   useEffect(() => {
     fetchTodos();
   }, []);
+
   const [todos] = useAtom(todosAtom);
   const [, deleteTodo] = useAtom(deleteTodoAtom);
 
@@ -23,10 +24,11 @@ export const App = () => {
           </h1>
         </header>
         <div className="border-b border-gray-200 mb-6">
-          <AddTodo />
+          {" "}
+          <AddTodo />{" "}
         </div>
         <TodoList todos={todos} deleteTodo={deleteTodo} />
       </div>
     </section>
   );
-};
+}

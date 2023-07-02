@@ -32,3 +32,4 @@ prisma/dev.db
 cypress/screenshots
 cypress/videos
 cypress/downloads
+.next
