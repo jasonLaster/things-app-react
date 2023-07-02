@@ -20,6 +20,11 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"],
+  "include": [
+    "src",
+    "things/src/components",
+    "things/src/types.ts",
+    "things/src/atoms.ts"
+  ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
