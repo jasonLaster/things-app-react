@@ -5,7 +5,7 @@ export async function resetDatabase() {
 
   try {
     await prisma.todo.deleteMany();
-    // figure out later
+    // figure out later. I want the id increment to reset but it’s not working yet
     // await prisma.$executeRaw(Prisma.sql`ALTER SEQUENCE "Todo_id_seq" RESTART WITH 1`);
     console.log("Database reset successful.");
   } catch (error) {

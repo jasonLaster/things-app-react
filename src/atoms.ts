@@ -15,7 +15,7 @@ export const fetchTodosAtom = atom(
 export const addTodoAtom = atom(null, async (get, set, newTodo: string) => {
   const res = await axios.post("/api/todos", {
     title: newTodo,
-    completed: false,
+    completed: true,
   });
   set(todosAtom, [...get(todosAtom), res.data]);
 });
@@ -38,12 +38,15 @@ export const completeTodoAtom = atom(null, async (get, set, todo: Todo) => {
   );
 });
 
-export const editTodoAtom = atom(null, async (get, set, todo: Pick<Todo, 'title' | 'id'>) => {
-  const res = await axios.put(`/api/todos/${todo.id}`, {
-    title: todo.title
-  });
-  set(
-    todosAtom,
-    get(todosAtom).map((t: Todo) => (t.id === todo.id ? res.data : t))
-  );
-});
+export const editTodoAtom = atom(
+  null,
+  async (get, set, todo: Pick<Todo, "title" | "id">) => {
+    const res = await axios.put(`/api/todos/${todo.id}`, {
+      title: todo.title,
+    });
+    set(
+      todosAtom,
+      get(todosAtom).map((t: Todo) => (t.id === todo.id ? res.data : t))
+    );
+  }
+);

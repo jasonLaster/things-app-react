@@ -11,6 +11,6 @@ li .delete {
   cursor: pointer;
 }
 
-li input[type=checkbox] {
+li input[type="checkbox"] {
   cursor: pointer;
 }
