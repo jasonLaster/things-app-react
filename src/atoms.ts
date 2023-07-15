@@ -15,7 +15,7 @@ export const fetchTodosAtom = atom(
 export const addTodoAtom = atom(null, async (get, set, newTodo: string) => {
   const res = await axios.post("/api/todos", {
     title: newTodo,
-    completed: false,
+    completed: true,
   });
   set(todosAtom, [...get(todosAtom), res.data]);
 });
