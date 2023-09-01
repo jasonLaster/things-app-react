@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "postinstall": "prisma generate"
+    "postinstall": "prisma generate",
+    "playwright:ui": "playwright test --ui"
   },
   "dependencies": {
     "@prisma/client": "^4.16.1",
@@ -27,6 +28,7 @@
     "tailwindcss": "^3.3.2"
   },
   "devDependencies": {
+    "@playwright/test": "^1.37.1",
     "@replayio/cypress": "^1.0.7",
     "@types/react": "^18.0.37",
     "@types/react-dom": "^18.0.11",

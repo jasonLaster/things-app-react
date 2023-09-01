@@ -3,6 +3,7 @@ import axios from "axios";
 import { Todo } from "./types";
 
 export const todosAtom = atom<Todo[]>([]);
+export const updatingAtom = atom<boolean>(false);
 
 export const fetchTodosAtom = atom(
   (get) => get(todosAtom),
@@ -21,7 +22,10 @@ export const addTodoAtom = atom(null, async (get, set, newTodo: string) => {
 });
 
 export const deleteTodoAtom = atom(null, async (get, set, todoId: number) => {
+  set(updatingAtom, true);
   await axios.delete(`/api/todos/${todoId}`);
+  set(updatingAtom, false);
+
   set(
     todosAtom,
     get(todosAtom).filter((t: Todo) => t.id !== todoId)

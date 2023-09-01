@@ -2,20 +2,32 @@ import { TodoList } from "../src/components/TodoList";
 import { AddTodo } from "../src/components/AddTodo";
 import { Inbox } from "../src/components/icons/Inbox";
 import { useAtom } from "jotai";
-import { todosAtom, deleteTodoAtom, fetchTodosAtom } from "../src/atoms";
-import { useEffect } from "react";
+import {
+  todosAtom,
+  updatingAtom,
+  deleteTodoAtom,
+  fetchTodosAtom,
+} from "../src/atoms";
+import { useState, useEffect } from "react";
 
 export default function Home() {
   const [, fetchTodos] = useAtom(fetchTodosAtom);
+  const [loaded, setLoaded] = useState(false);
+  const [updating] = useAtom(updatingAtom);
+
   useEffect(() => {
-    fetchTodos();
+    fetchTodos().then(() => setLoaded(true));
   }, []);
 
   const [todos] = useAtom(todosAtom);
   const [, deleteTodo] = useAtom(deleteTodoAtom);
 
   return (
-    <section className="h-screen w-screen bg-slate-800 flex items-center justify-center">
+    <section
+      data-test-updating={updating}
+      data-test-loaded={loaded}
+      className="h-screen w-screen bg-slate-800 flex items-center justify-center"
+    >
       <div className="max-w-lg w-full bg-white rounded-xl overflow-hidden shadow-lg px-5 py-8">
         <header className="mb-6">
           <h1 className="text-2xl font-bold text-gray-900">
